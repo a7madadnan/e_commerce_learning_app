@@ -8,9 +8,12 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter  
-  
+    sdk: flutter 
+
   google_fonts: ^6.3.2
+  flutter_svg: ^2.1.1 
+  
+  
 
 
 dev_dependencies:
@@ -19,4 +22,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+  assets:
+    - assets/
   uses-material-design: true
