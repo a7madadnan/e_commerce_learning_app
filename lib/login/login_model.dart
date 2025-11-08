@@ -1,9 +1,9 @@
 class LoginModel {
-  String email;
+  String userName;
   String password;
-  LoginModel(this.email, this.password);
+  LoginModel(this.userName, this.password);
 
   Map<String, dynamic> toJson() {
-    return {'email': email, 'password': password};
+    return {'username': userName, 'password': password};
   }
 }

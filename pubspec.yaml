@@ -12,9 +12,11 @@ dependencies:
 
   google_fonts: ^6.3.2
   flutter_svg: ^2.1.1 
+  dio: ^5.9.0
+  shared_preferences: ^2.5.3
+  riverpod: ^3.0.3
+  flutter_riverpod: ^3.0.3
   
-  
-
 
 dev_dependencies:
   flutter_test:
@@ -23,5 +25,5 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/
+    - lib/assets/
   uses-material-design: true

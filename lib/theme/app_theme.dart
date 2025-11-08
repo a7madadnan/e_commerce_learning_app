@@ -27,6 +27,12 @@ final appTheme = ThemeData(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: Color(0xffD7D9E0)),
     ),
+
+    // fillColor: colorScheme.surfaceContainer,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(color: Color(0xffD7D9E0)),
+    ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: Color(0xffD7D9E0)),
