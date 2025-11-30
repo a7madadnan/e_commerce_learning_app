@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class inputfield extends StatelessWidget {
+class Inputfield extends StatelessWidget {
 
   final String label;
   final String hint;
@@ -9,7 +9,7 @@ class inputfield extends StatelessWidget {
   final bool obscure;
   final String? Function(String?)? validator;
 
-  const inputfield({
+  const Inputfield({
     super.key,
     required this.label,
     required this.hint,

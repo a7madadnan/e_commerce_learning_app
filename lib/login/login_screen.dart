@@ -1,14 +1,13 @@
-import 'dart:developer';
-
 import 'package:e_commerce_learning_app/core/local_storage_service.dart';
 import 'package:e_commerce_learning_app/core/network/dio.dart';
 import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
+import 'package:e_commerce_learning_app/home/view/home_screen.dart';
 import 'package:e_commerce_learning_app/login/login_model.dart';
-import 'package:e_commerce_learning_app/login/user_model.dart';
 import 'package:e_commerce_learning_app/sign_up/sign_up_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -63,8 +62,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   SizedBox(height: 8.0),
                   TextFormField(
                     controller: userNameController,
-
                     textAlign: TextAlign.right,
+
                     decoration: InputDecoration(
                       hintText: 'ادخل اسمك',
                       hintStyle: TextStyle(fontSize: 12),
@@ -103,15 +102,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       hintStyle: TextStyle(fontSize: 14),
                     ),
 
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'ادخل كلمه المرور ';
-                      }
-                      if (value.length < 8) {
-                        return "كلمه المرور اقل شي 8";
-                      }
-                      return null;
-                    },
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(
+                        errorText: 'ادخل كلمه الممرور',
+                      ),
+                      FormBuilderValidators.minLength(
+                        8,
+                        errorText: 'اقل عدد مسموح 8',
+                      ),
+                    ]),
                   ),
                 ],
               ),
@@ -126,14 +125,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     localStorageService: ref.read(localstorageServiceProvider),
                   );
 
-                  authRepo.login(
+                  final user = await authRepo.login(
                     LoginModel(
                       userNameController.text,
                       passwordController.text,
                     ),
                   );
+                  if (context.mounted) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  }
                 },
 
+                // Navigate to home screen after successful login
                 child: Text('تسجيل الدخول'),
               ),
 
@@ -142,7 +147,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return signUpscreen();
+                        return SignUpScreen();
                       },
                     ),
                   );

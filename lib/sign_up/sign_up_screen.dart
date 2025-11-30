@@ -2,14 +2,14 @@ import 'package:e_commerce_learning_app/component.dart';
 import 'package:e_commerce_learning_app/sign_up/sign_up_model.dart';
 import 'package:flutter/material.dart';
 
-class signUpscreen extends StatefulWidget {
-  const signUpscreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<signUpscreen> createState() => _signUpscreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _signUpscreenState extends State<signUpscreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
@@ -38,7 +38,7 @@ class _signUpscreenState extends State<signUpscreen> {
                 style: TextStyle(fontSize: 14),
               ),
 
-              inputfield(label: 'اسم المستخدم', hint: 'على سبيل المثال احمد محمد ', controller: usernameController),
+              Inputfield(label: 'اسم المستخدم', hint: 'على سبيل المثال احمد محمد ', controller: usernameController),
               // Column(
               //   crossAxisAlignment: CrossAxisAlignment.end,
               //   children: [
