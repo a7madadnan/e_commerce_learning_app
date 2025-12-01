@@ -1,0 +1,5 @@
+base_locale: ar
+input_directory: lib/translator
+input_file_pattern: .json
+timestamp: false
+statistics: false
