@@ -7,7 +7,7 @@ final appTheme = ThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     ),
   ),
-  fontFamily: GoogleFonts.cairo().fontFamily,
+  fontFamily: 'TRYGrtsk',
 
   colorScheme: ColorScheme(
     brightness: Brightness.light,

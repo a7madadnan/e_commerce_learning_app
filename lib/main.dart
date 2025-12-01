@@ -6,16 +6,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'translator/strings.g.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
   runApp(
+     TranslationProvider(
     ProviderScope(
       overrides: [
         sharedPreferenceProvider.overrideWith((ref) => sharedPreferences),
       ],
       child: const MainApp(),
     ),
+     )
   );
 }
 
@@ -25,5 +29,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(theme: appTheme, home: LoginScreen());
+
+       locale: TranslationProvider.of(context).flutterLocale;
+      supportedLocales: AppLocaleUtils.supportedLocales
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
   }
 }

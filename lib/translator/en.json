@@ -1,0 +1,8 @@
+{
+  "appName": "dragon",
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password"
+  }
+}
