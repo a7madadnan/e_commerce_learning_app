@@ -1,10 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final appTheme = ThemeData(
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      padding: EdgeInsets.symmetric(vertical: 14),
+      textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     ),
   ),
   fontFamily: 'TRYGrtsk',
@@ -24,7 +28,7 @@ final appTheme = ThemeData(
 
   inputDecorationTheme: InputDecorationTheme(
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(14),
       borderSide: BorderSide(color: Color(0xffD7D9E0)),
     ),
 
@@ -35,7 +39,7 @@ final appTheme = ThemeData(
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(color: Color(0xffD7D9E0)),
+      borderSide: BorderSide(color: Color(0xff3B3F4A)),
     ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),

@@ -1,9 +1,23 @@
 {
-    
   "appName": "دراكون",
+
   "login": {
     "title": "تسجيل الدخول",
+
+    "welcomeBack": " ! مرحبا بعودتك ",
+    "subtitle": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص",
+
     "username": "اسم المستخدم",
-    "password": "كلمة السر"
+    "usernameHint": "ادخل اسمك",
+
+    "password": "كلمة السر",
+    "passwordHint": "ادخل كلمة المرور لحسابك",
+
+    "errors": {
+      "passwordRequired": "ادخل كلمه المرور",
+      "passwordMin": "اقل عدد مسموح 8"
+    },
+    "noAccountText": "هل لديك حساب ؟",
+    "createAccountText": "انشأ حساب جديد"
   }
 }

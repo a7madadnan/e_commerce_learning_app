@@ -37,7 +37,9 @@ flutter:
   fonts:
     - family: TRYGrtsk
       fonts:
-        - asset: assets/fonts/TRYGrtsk-Regular.ttf
-        - asset: assets/fonts/TRYGrtsk-Bold.ttf
+        - asset: lib/assets/fonts/TRYGrtsk-Regular.ttf
+          weight: 400
+        - asset: lib/assets/fonts/TRYGrtsk-Bold.ttf
+          weight: 700
 
   

@@ -37,7 +37,7 @@ class TranslationsEn with BaseTranslations<AppLocale, Translations> implements T
 	TranslationsEn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsEn(meta: meta ?? this.$meta);
 
 	// Translations
-	@override String get appName => 'dragon';
+	@override String get appName => 'Drakon';
 	@override late final _TranslationsLoginEn login = _TranslationsLoginEn._(_root);
 }
 
@@ -49,8 +49,26 @@ class _TranslationsLoginEn implements TranslationsLoginAr {
 
 	// Translations
 	@override String get title => 'Login';
+	@override String get welcomeBack => 'Welcome back!';
+	@override String get subtitle => 'This text is an example of a placeholder text that can be replaced in the same space. It has been generated as a sample.';
 	@override String get username => 'Username';
+	@override String get usernameHint => 'Enter your name';
 	@override String get password => 'Password';
+	@override String get passwordHint => 'Enter your account password';
+	@override late final _TranslationsLoginErrorsEn errors = _TranslationsLoginErrorsEn._(_root);
+	@override String get noAccountText => 'Don\'t have an account?';
+	@override String get createAccountText => 'Create a new account';
+}
+
+// Path: login.errors
+class _TranslationsLoginErrorsEn implements TranslationsLoginErrorsAr {
+	_TranslationsLoginErrorsEn._(this._root);
+
+	final TranslationsEn _root; // ignore: unused_field
+
+	// Translations
+	@override String get passwordRequired => 'Please enter your password';
+	@override String get passwordMin => 'Minimum allowed is 8 characters';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -61,10 +79,18 @@ class _TranslationsLoginEn implements TranslationsLoginAr {
 extension on TranslationsEn {
 	dynamic _flatMapFunction(String path) {
 		return switch (path) {
-			'appName' => 'dragon',
+			'appName' => 'Drakon',
 			'login.title' => 'Login',
+			'login.welcomeBack' => 'Welcome back!',
+			'login.subtitle' => 'This text is an example of a placeholder text that can be replaced in the same space. It has been generated as a sample.',
 			'login.username' => 'Username',
+			'login.usernameHint' => 'Enter your name',
 			'login.password' => 'Password',
+			'login.passwordHint' => 'Enter your account password',
+			'login.errors.passwordRequired' => 'Please enter your password',
+			'login.errors.passwordMin' => 'Minimum allowed is 8 characters',
+			'login.noAccountText' => 'Don\'t have an account?',
+			'login.createAccountText' => 'Create a new account',
 			_ => null,
 		};
 	}

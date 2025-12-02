@@ -4,6 +4,7 @@ import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
 import 'package:e_commerce_learning_app/home/view/home_screen.dart';
 import 'package:e_commerce_learning_app/login/login_model.dart';
 import 'package:e_commerce_learning_app/sign_up/sign_up_screen.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   // يستخدم للتحكم في textfield
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isPasswordHidden = true;
 
   final GlobalKey<FormState> formkey = GlobalKey<FormState>(); //مهم للفورم
   @override
@@ -30,46 +32,45 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       appBar: AppBar(title: Text(t.login.title), centerTitle: true),
 
       body: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Form(
           key: formkey, //ربط الفورم
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            spacing: 16,
+            spacing: 10,
             children: [
               Text(
-                ' ! مرحبا بعودتك ',
+                t.login.welcomeBack,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
               ),
               Text(
-                'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص',
+                t.login.subtitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14),
               ),
-              SizedBox(height: 5.0),
 
+              // SizedBox(height: 5.0),
               SvgPicture.asset('assets/icons/lock.svg', width: 24, height: 24),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'اسمك',
+                    t.login.username,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 8.0),
+                  SizedBox(height: 10.0),
                   TextFormField(
                     controller: userNameController,
-                    textAlign: TextAlign.right,
-
                     decoration: InputDecoration(
-                      hintText: 'ادخل اسمك',
+                      hintText: t.login.username,
                       hintStyle: TextStyle(fontSize: 12),
                       suffixIcon: Padding(
                         padding: const EdgeInsets.all(8.0),
+
                         child: SvgPicture.asset(
                           'assets/icons/icons.svg',
                           width: 24,
@@ -81,11 +82,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ],
               ),
+              SizedBox(height: 1.0),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'كلمه المرور',
+                    t.login.password,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
@@ -95,27 +97,40 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: passwordController,
-                    obscureText: true, //كلمه المرور مخفيه
+                    obscureText: isPasswordHidden, //كلمه المرور مخفيه
                     textAlign: TextAlign.right,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
-                      hintText: ' ادحل كلمة المرور لحسابك',
+                      hintText: t.login.passwordHint,
                       hintStyle: TextStyle(fontSize: 14),
-                    ),
 
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isPasswordHidden
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                          color: Colors.black54,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isPasswordHidden = !isPasswordHidden;
+                          });
+                        },
+                      ),
+                    ),
                     validator: FormBuilderValidators.compose([
                       FormBuilderValidators.required(
-                        errorText: 'ادخل كلمه الممرور',
+                        errorText: t.login.errors.passwordRequired,
                       ),
                       FormBuilderValidators.minLength(
                         8,
-                        errorText: 'اقل عدد مسموح 8',
+                        errorText: t.login.errors.passwordMin,
                       ),
                     ]),
                   ),
                 ],
               ),
-
+              SizedBox(height: 10.0),
               FilledButton(
                 onPressed: () async {
                   if (!formkey.currentState!.validate()) {
@@ -140,21 +155,45 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 },
 
                 // Navigate to home screen after successful login
-                child: Text('تسجيل الدخول'),
+                child: Text(t.login.title),
               ),
-
-              OutlinedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignUpScreen();
-                      },
+              SizedBox(height: 10.0),
+             Center(child: 
+               RichText(
+                text: TextSpan(
+                  text: t.login.noAccountText,
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                  children: [
+                    TextSpan(
+                      text:t.login.createAccountText,
+                      style: TextStyle(color: Color(0xffFF6D38),
+                      fontWeight: FontWeight.bold
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ),
+                          );
+                        },
                     ),
-                  );
-                },
-                child: Text('إنشاء حساب'),
+                  ],
+                ),
               ),
+             )
+              // OutlinedButton(
+              //   onPressed: () {
+              //     Navigator.of(context).push(
+              //       MaterialPageRoute(
+              //         builder: (context) {
+              //           return SignUpScreen();
+              //         },
+              //       ),
+              //     );
+              //   },
+              //   child: Text('إنشاء حساب'),
+              // ),
             ],
           ),
         ),

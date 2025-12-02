@@ -58,11 +58,46 @@ class TranslationsLoginAr {
 	/// ar: 'تسجيل الدخول'
 	String get title => 'تسجيل الدخول';
 
+	/// ar: ' ! مرحبا بعودتك '
+	String get welcomeBack => ' ! مرحبا بعودتك ';
+
+	/// ar: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص'
+	String get subtitle => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص';
+
 	/// ar: 'اسم المستخدم'
 	String get username => 'اسم المستخدم';
 
+	/// ar: 'ادخل اسمك'
+	String get usernameHint => 'ادخل اسمك';
+
 	/// ar: 'كلمة السر'
 	String get password => 'كلمة السر';
+
+	/// ar: 'ادخل كلمة المرور لحسابك'
+	String get passwordHint => 'ادخل كلمة المرور لحسابك';
+
+	late final TranslationsLoginErrorsAr errors = TranslationsLoginErrorsAr._(_root);
+
+	/// ar: 'هل لديك حساب ؟'
+	String get noAccountText => 'هل لديك حساب ؟';
+
+	/// ar: 'انشأ حساب جديد'
+	String get createAccountText => 'انشأ حساب جديد';
+}
+
+// Path: login.errors
+class TranslationsLoginErrorsAr {
+	TranslationsLoginErrorsAr._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ar: 'ادخل كلمه المرور'
+	String get passwordRequired => 'ادخل كلمه المرور';
+
+	/// ar: 'اقل عدد مسموح 8'
+	String get passwordMin => 'اقل عدد مسموح 8';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -75,8 +110,16 @@ extension on Translations {
 		return switch (path) {
 			'appName' => 'دراكون',
 			'login.title' => 'تسجيل الدخول',
+			'login.welcomeBack' => ' ! مرحبا بعودتك ',
+			'login.subtitle' => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص',
 			'login.username' => 'اسم المستخدم',
+			'login.usernameHint' => 'ادخل اسمك',
 			'login.password' => 'كلمة السر',
+			'login.passwordHint' => 'ادخل كلمة المرور لحسابك',
+			'login.errors.passwordRequired' => 'ادخل كلمه المرور',
+			'login.errors.passwordMin' => 'اقل عدد مسموح 8',
+			'login.noAccountText' => 'هل لديك حساب ؟',
+			'login.createAccountText' => 'انشأ حساب جديد',
 			_ => null,
 		};
 	}

@@ -1,8 +1,23 @@
 {
-  "appName": "dragon",
+  "appName": "Drakon",
+
   "login": {
     "title": "Login",
+
+    "welcomeBack": "Welcome back!",
+    "subtitle": "This text is an example of a placeholder text that can be replaced in the same space. It has been generated as a sample.",
+
     "username": "Username",
-    "password": "Password"
+    "usernameHint": "Enter your name",
+
+    "password": "Password",
+    "passwordHint": "Enter your account password",
+
+    "errors": {
+      "passwordRequired": "Please enter your password",
+      "passwordMin": "Minimum allowed is 8 characters"
+    },
+    "noAccountText": "Don't have an account?",
+    "createAccountText": "Create a new account"
   }
 }

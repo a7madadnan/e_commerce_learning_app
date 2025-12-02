@@ -8,20 +8,18 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
   runApp(
-    TranslationProvider(child:
-    ProviderScope(
-      overrides: [
-        sharedPreferenceProvider.overrideWith((ref) => sharedPreferences),
-      ],
-      child: const MainApp(),
+    TranslationProvider(
+      child: ProviderScope(
+        overrides: [
+          sharedPreferenceProvider.overrideWith((ref) => sharedPreferences),
+        ],
+        child: const MainApp(),
+      ),
     ),
-    )
   );
 }
 
@@ -30,8 +28,11 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: appTheme, home: LoginScreen(),
-    
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: appTheme,
+      home: LoginScreen(),
+
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
