@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:e_commerce_learning_app/component.dart';
-import 'package:e_commerce_learning_app/sign_up/sign_up_model.dart';
+import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -14,7 +16,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
 
-  final GlobalKey<FormState> formkey =GlobalKey<FormState>(); //مهم للفورم 
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>(); //مهم للفورم
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +40,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 style: TextStyle(fontSize: 14),
               ),
 
-              Inputfield(label: 'اسم المستخدم', hint: 'على سبيل المثال احمد محمد ', controller: usernameController),
+              Inputfield(
+                label: 'اسم المستخدم',
+                hint: 'على سبيل المثال احمد محمد ',
+                controller: usernameController,
+              ),
               // Column(
               //   crossAxisAlignment: CrossAxisAlignment.end,
               //   children: [
@@ -91,44 +97,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ],
               ),
-                Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'تكرار كلمه المرور',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'تكرار كلمه المرور',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                SizedBox(height: 8.0),
-                TextFormField(
-                  controller: passwordController,
-                  obscureText: true, //كلمه المرور مخفيه
-                  textAlign: TextAlign.right,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    hintText: ' كرر كلمه المرور',
-                    hintStyle: TextStyle(fontSize: 14),
-                  ),
+                  SizedBox(height: 8.0),
+                  TextFormField(
+                    controller: passwordController,
+                    obscureText: true, //كلمه المرور مخفيه
+                    textAlign: TextAlign.right,
+                    keyboardType: TextInputType.visiblePassword,
+                    decoration: InputDecoration(
+                      hintText: ' كرر كلمه المرور',
+                      hintStyle: TextStyle(fontSize: 14),
+                    ),
 
-                  validator :(value){
-                  if(value ==null || value.isEmpty){
-                    return 'ادخل كلمه المرور ';
-                  }
-                   if(value.length < 8){
-                    return "كلمه المرور اقل شي 8";
-                   }
-                   return null;
-                }
-                ),
-                
-              ],
-            ),
-            SizedBox(height: 20.0),
-           FilledButton(onPressed:(){
-            final signUpModel =SignUpModel(emailController.text, passwordController.text);
-           } , child: Text('المواصله'))
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'ادخل كلمه المرور ';
+                      }
+                      if (value.length < 8) {
+                        return "كلمه المرور اقل شي 8";
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: 20.0),
+              FilledButton(
+                onPressed: () {
+                  final signUpModel = SignUpModel(
+                    emailController.text,
+                    passwordController.text,
+                  );
+                },
+                child: Text('المواصله'),
+              ),
             ],
           ),
         ),

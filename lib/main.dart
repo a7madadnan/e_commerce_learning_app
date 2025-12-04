@@ -1,10 +1,13 @@
+import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
 import 'package:e_commerce_learning_app/core/dependencies_injection.dart';
-import 'package:e_commerce_learning_app/login/login_screen.dart';
+import 'package:e_commerce_learning_app/core/route/app_router.dart';
+import 'package:e_commerce_learning_app/core/auth/login/login_screen.dart';
 import 'package:e_commerce_learning_app/theme/app_theme.dart';
 import 'package:e_commerce_learning_app/translator/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/legacy.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,16 +26,19 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, ref) {
+    final router = ref.read(routerProvider);
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: LoginScreen(),
-
+      routerDelegate: router.delegate(
+        reevaluateListenable: ref.watch(loggedInProvider),
+      ),
+      routerConfig: router.config(),
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,

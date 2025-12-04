@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:e_commerce_learning_app/core/dependencies_injection.dart';
-import 'package:e_commerce_learning_app/login/user_model.dart';
+import 'package:e_commerce_learning_app/core/auth/login/user_model.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,8 +22,11 @@ class LocalStorageService {
     sharedPreferences.setString('user', jsonEncode(userModel.toJson()));
   }
 
-  UserModel getUser() {
-    final String userJson = sharedPreferences.getString('user') ?? '';
+  UserModel? getUser() {
+    final String? userJson = sharedPreferences.getString('user');
+    if (userJson == null) {
+      return null;
+    }
     return UserModel.fromJson(jsonDecode(userJson));
   }
 }

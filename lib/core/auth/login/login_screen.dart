@@ -1,16 +1,20 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
 import 'package:e_commerce_learning_app/core/local_storage_service.dart';
 import 'package:e_commerce_learning_app/core/network/dio.dart';
 import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
 import 'package:e_commerce_learning_app/home/view/home_screen.dart';
-import 'package:e_commerce_learning_app/login/login_model.dart';
-import 'package:e_commerce_learning_app/sign_up/sign_up_screen.dart';
+import 'package:e_commerce_learning_app/core/auth/login/login_model.dart';
+import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../translator/strings.g.dart';
+import '../../../translator/strings.g.dart';
 
+@RoutePage()
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -19,18 +23,19 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  // هذا المتغير لا يمكن اعاده تعيينه بعد انشائه
-  // يستخدم للتحكم في textfield
-  final TextEditingController userNameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController(
+    text: kDebugMode ? 'alexnes' : null,
+  );
+  final TextEditingController passwordController = TextEditingController(
+    text: kDebugMode ? 'password' : null,
+  );
   bool isPasswordHidden = true;
 
-  final GlobalKey<FormState> formkey = GlobalKey<FormState>(); //مهم للفورم
+  final GlobalKey<FormState> formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(t.login.title), centerTitle: true),
-
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
         child: Form(
@@ -136,52 +141,51 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   if (!formkey.currentState!.validate()) {
                     return;
                   }
-                  final AuthRepo authRepo = AuthRepo(
-                    dio: dio,
-                    localStorageService: ref.read(localstorageServiceProvider),
-                  );
 
-                  final user = await authRepo.login(
-                    LoginModel(
-                      userNameController.text,
-                      passwordController.text,
-                    ),
-                  );
-                  if (context.mounted) {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
-                    );
-                  }
+                  await ref
+                      .read(authControllerProvider.notifier)
+                      .login(
+                        LoginModel(
+                          userNameController.text,
+                          passwordController.text,
+                        ),
+                      );
+                  // if (context.mounted) {
+                  //   Navigator.of(context).pushReplacement(
+                  //     MaterialPageRoute(builder: (context) => HomeScreen()),
+                  //   );
+                  // }
                 },
 
                 // Navigate to home screen after successful login
                 child: Text(t.login.title),
               ),
               SizedBox(height: 10.0),
-             Center(child: 
-               RichText(
-                text: TextSpan(
-                  text: t.login.noAccountText,
-                  style: TextStyle(color: Colors.black, fontSize: 16),
-                  children: [
-                    TextSpan(
-                      text:t.login.createAccountText,
-                      style: TextStyle(color: Color(0xffFF6D38),
-                      fontWeight: FontWeight.bold
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: t.login.noAccountText,
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    children: [
+                      TextSpan(
+                        text: t.login.createAccountText,
+                        style: TextStyle(
+                          color: Color(0xffFF6D38),
+                          fontWeight: FontWeight.bold,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SignUpScreen(),
+                              ),
+                            );
+                          },
                       ),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => SignUpScreen(),
-                            ),
-                          );
-                        },
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-             )
               // OutlinedButton(
               //   onPressed: () {
               //     Navigator.of(context).push(
