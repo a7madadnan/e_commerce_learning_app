@@ -18,9 +18,12 @@ class AuthController extends Notifier<UserModel?> {
     await ref.read(authRepoProvider).login(loginModel);
     ref.invalidateSelf();
   }
+
+  Future<void> logout() async {
+    await ref.read(authRepoProvider).logout();
+    ref.invalidateSelf();
+  }
 }
-
-
 
 final loggedInProvider = Provider((ref) {
   final changeNotifier = ValueNotifier(false);
