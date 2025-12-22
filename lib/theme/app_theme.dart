@@ -17,7 +17,7 @@ final appTheme = ThemeData(
     brightness: Brightness.light,
     primary: Color(0xffFF6D38),
     onPrimary: Colors.white,
-    secondary: Color(0xffFF6D38),
+    secondary: Color.fromARGB(255, 238, 161, 134),
     onSecondary: Colors.white,
     error: Colors.red,
     onError: Colors.white,

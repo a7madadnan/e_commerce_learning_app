@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
-import 'package:e_commerce_learning_app/core/local_storage_service.dart';
-import 'package:e_commerce_learning_app/core/network/dio.dart';
-import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
-import 'package:e_commerce_learning_app/home/view/home_screen.dart';
 import 'package:e_commerce_learning_app/core/auth/login/login_model.dart';
 import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_screen.dart';
+import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -150,6 +147,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           passwordController.text,
                         ),
                       );
+                  if (context.mounted) {
+                    context.router.navigate(HomeRoute());
+                  }
                   // if (context.mounted) {
                   //   Navigator.of(context).pushReplacement(
                   //     MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -205,3 +205,42 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     );
   }
 }
+
+final xProvider = Provider<int>((ref) {
+  return 10 - 9;
+});
+
+// class MyWidget extends StatelessWidget {
+//   const MyWidget({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Text('number'),
+//         Consumer(
+//           builder: (context, ref, child) {
+//             final x = ref.watch(xProvider);
+
+//             return Text(x.toString());
+//           },
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+// class MyWidget3 extends ConsumerStatefulWidget {
+//   const MyWidget3({super.key});
+
+//   @override
+//   ConsumerState<MyWidget3> createState() => _MyWidget3State();
+// }
+
+// class _MyWidget3State extends ConsumerState<MyWidget3> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return const Placeholder();
+//   }
+// }
+

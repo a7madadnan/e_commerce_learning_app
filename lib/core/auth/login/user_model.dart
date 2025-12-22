@@ -4,10 +4,10 @@ class UserModel {
   final String username;
   final String email;
   final String joinDate;
-  final String phone;
-  final int billingAddressId;
+  final String? phone;
+  final int? billingAddressId;
   final int shippingAddressId;
-  final String avatar;
+  final String? avatar;
   final String password;
 
   UserModel({
@@ -16,10 +16,10 @@ class UserModel {
     required this.username,
     required this.email,
     required this.joinDate,
-    required this.phone,
-    required this.billingAddressId,
+    this.phone,
+    this.billingAddressId,
     required this.shippingAddressId,
-    required this.avatar,
+    this.avatar,
     required this.password,
   });
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(

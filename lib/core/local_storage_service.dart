@@ -29,4 +29,8 @@ class LocalStorageService {
     }
     return UserModel.fromJson(jsonDecode(userJson));
   }
+
+  void removeUser() {
+    sharedPreferences.remove('user');
+  }
 }
