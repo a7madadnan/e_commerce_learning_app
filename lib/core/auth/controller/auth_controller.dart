@@ -4,13 +4,19 @@ import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// المسؤول الرئيسي عن حاله المستخدم
 final authControllerProvider = NotifierProvider<AuthController, UserModel?>(
   AuthController.new,
 );
 
+// المسؤول عن حفظ حاله المستخدم
+// اذا المستخدم سجل بياناته يخزنهن اذا لا يكول null
 class AuthController extends Notifier<UserModel?> {
   @override
-  UserModel? build() {
+  // الbuild معناها كل مايشتغل التطبيق روح جيك معلومات اليورز محفزظ بالريبو 
+  // وهي مسؤولة عن إرجاع الحالة الابتدائية (initial state).
+  UserModel? build() { 
+    // اقرأ من authRepo → هل يوجد مستخدم محفوظ سابقًا
     return ref.read(authRepoProvider).getUser;
   }
 
@@ -20,13 +26,11 @@ class AuthController extends Notifier<UserModel?> {
   }
 }
 
-
-
 final loggedInProvider = Provider((ref) {
   final changeNotifier = ValueNotifier(false);
   ref.listen(authControllerProvider, (pre, next) {
     changeNotifier.value = next != null;
   });
-
   return changeNotifier;
 });
+

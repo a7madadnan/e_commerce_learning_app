@@ -28,7 +28,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   slang_build_runner: ^4.11.0 
-  build_runner: ^2.10.4 
+  build_runner: ^2.10.4
   auto_route_generator: ^10.4.0
 
 
@@ -47,3 +47,11 @@ flutter:
           weight: 700
 
   
+
+# dependency_overrides:
+#   # هذه الإصدارات تحل التعارض مع flutter_test
+#   test: ^1.24.3
+#   test_api: ^0.7.7
+#   matcher: ^0.12.17
+#   analyzer: ^8.4.1
+#   # لاحظ: لا تضع flutter_lints هنا
