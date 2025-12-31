@@ -18,7 +18,10 @@ class AuthController extends Notifier<UserModel?> {
   UserModel? build() { 
     // اقرأ من authRepo → هل يوجد مستخدم محفوظ سابقًا
     return ref.read(authRepoProvider).getUser;
+    // return null ;
   }
+
+  
 
   Future<void> login(LoginModel loginModel) async {
     await ref.read(authRepoProvider).login(loginModel);

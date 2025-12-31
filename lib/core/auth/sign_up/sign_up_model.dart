@@ -1,10 +1,10 @@
 class SignUpModel {
-  String email;
+  String username;
   String password;
 
-  SignUpModel(this.email, this.password);
+  SignUpModel(this.username, this.password);
 
   Map<String, dynamic> toJson() {
-    return {'email': email, 'password': password};
+    return {'email': username , 'password': password};
   }
 }

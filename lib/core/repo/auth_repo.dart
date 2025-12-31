@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/local_storage_service.dart';
 import 'package:e_commerce_learning_app/core/auth/login/login_model.dart';
 import 'package:e_commerce_learning_app/core/auth/login/user_model.dart';
@@ -21,6 +22,13 @@ class AuthRepo {
 
   AuthRepo({required this.dio, required this.localStorageService});
 
+  Future<UserModel> singUp(SignUpModel model) async{
+    final res =await dio.post('./singup', data: model.toJson(),
+    );
+    return UserModel.fromJson(res.data);
+  }
+
+ 
   Future<UserModel> login(LoginModel loginModel) async {
     final res = await dio.post('/login', data: loginModel.toJson());
     log('ccccc ${res.data}');
