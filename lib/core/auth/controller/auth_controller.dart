@@ -21,8 +21,6 @@ class AuthController extends Notifier<UserModel?> {
     // return null ;
   }
 
-  
-
   Future<void> login(LoginModel loginModel) async {
     await ref.read(authRepoProvider).login(loginModel);
     ref.invalidateSelf();

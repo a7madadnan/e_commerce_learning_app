@@ -22,13 +22,24 @@ class AuthRepo {
 
   AuthRepo({required this.dio, required this.localStorageService});
 
-  Future<UserModel> singUp(SignUpModel model) async{
-    final res =await dio.post('./singup', data: model.toJson(),
-    );
-    return UserModel.fromJson(res.data);
+  Future<UserModel> singUp(SignUpModel model) async {
+    try {
+      final res = await dio.post('/signup', data: model.toJson());
+
+      log('SIGN UP RESPONSE: ${res.data}');
+
+      final user = UserModel.fromJson(res.data['customer'] ?? res.data);
+
+      localStorageService.saveUser(user);
+
+      // return UserModel.fromJson(res.data);
+      return user;
+    } on DioException catch (e) {
+      log('SIGN UP ERROR: ${e.response?.data}');
+      throw e.response?.data['message'] ?? 'Sign up failed';
+    }
   }
 
- 
   Future<UserModel> login(LoginModel loginModel) async {
     final res = await dio.post('/login', data: loginModel.toJson());
     log('ccccc ${res.data}');

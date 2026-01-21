@@ -13,9 +13,8 @@ class SignUpController extends Notifier<SignUpState> {
     return SignUpState();
   }
 
-
 Future<void> signUp(SignUpModel model) async {
-  state = state.copyWith(isLoading: true, error: null);
+  state = state.copyWith(isLoading: true, error: null, isSuccess: true );
 
   try {
     await ref.read(authRepoProvider).singUp(model);

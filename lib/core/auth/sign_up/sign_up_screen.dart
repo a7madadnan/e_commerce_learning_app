@@ -15,15 +15,27 @@ class SignUpScreen extends ConsumerStatefulWidget {
 }
 
 class _SignUpScreenState extends ConsumerState<SignUpScreen> {
-
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
-
+  // final TextEditingController confirmPasswordController =TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>(); //مهم للفورم
   @override
   Widget build(BuildContext context) {
-   
+    ref.listen(signUpControllerProvider, (previous, next) {
+      if (next.isSuccess) {
+        context.router.replace(const HomeRoute());
+      }
+
+      if (next.error != null) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text(next.error!)));
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(title: Text(' إنشاء حساب جديد '), centerTitle: true),
       body: Padding(
@@ -50,27 +62,21 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 hint: 'على سبيل المثال احمد محمد ',
                 controller: usernameController,
               ),
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: [
-              //     Text(
-              //       'اسم المستخدم',
-              //       style: TextStyle(
-              //         color: Colors.black,
-              //         fontWeight: FontWeight.w500,
-              //       ),
-              //     ),
-              //     SizedBox(height: 8.0),
-              //     TextFormField(
-              //       controller: emailController,
-              //       textAlign: TextAlign.right,
-              //       decoration: InputDecoration(
-              //         hintText: 'على سبيل المثال احمد محمد',
-              //         hintStyle: TextStyle(fontSize: 12),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              Inputfield(
+                label: 'الاسم ',
+                hint: 'على سبيل المثال احمد محمد ',
+                controller: nameController,
+              ),
+              Inputfield(
+                label: 'الايميل ',
+                hint: 'boone@raza.net ',
+                controller: emailController,
+              ),
+              Inputfield(
+                label: 'رقم الهاتف ',
+                hint: '+44 0776527762 ',
+                controller: phoneController,
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -103,70 +109,27 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'تكرار كلمه المرور',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(height: 8.0),
-                  TextFormField(
-                    controller: confirmPasswordController,
-                    obscureText: true, //كلمه المرور مخفيه
-                    // textAlign: TextAlign.right,
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      hintText: ' كرر كلمه المرور',
-                      hintStyle: TextStyle(fontSize: 14),
-                    ),
 
-                    validator: (value) {
-                      if(value != passwordController.text){
-                        return 'كلمه المرور غير متطابقه';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
-              ),
               SizedBox(height: 20.0),
               FilledButton(
                 onPressed: () async {
-                  if(!formkey.currentState!.validate()){
-                     return;
+                  if (!formkey.currentState!.validate()) {
+                    return;
                   }
                   await ref
-                     .read(signUpControllerProvider.notifier)
-                     .signUp(
-                      SignUpModel(usernameController.text, passwordController.text)
-                     );
-                     if(context.mounted){
-                       context.router.replace(const HomeRoute());
-                     }
+                      .read(signUpControllerProvider.notifier)
+                      .signUp(
+                        SignUpModel(
+                          username: usernameController.text,
+                          password: passwordController.text,
+                          name: nameController.text, // الاسم قبل الايميل
+                          email: emailController.text,
+                          phone: phoneController.text,
+                          avatar: null,
+                        ),
+                      );
                 },
-                child: const Text('المواصله') ,
-                // onPressed: signUpState.isLoading
-                // ? null
-                // :() {
-                //   if (formkey.currentState!.validate()){
-                //     ref.read(signUpControllerProvider.notifier).signUp(
-                //       SignUpModel(
-                //       usernameController.text,
-                //       passwordController.text
-                //       )
-                //     );
-                 
-
-                  // final signUpModel = SignUpModel(
-                  //   usernameController.text,
-                  //   passwordController.text,
-                  // );
-             
-              //  const Text('المواصله'),
+                child: const Text('المواصله'),
               ),
             ],
           ),
