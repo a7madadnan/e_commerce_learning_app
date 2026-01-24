@@ -17,7 +17,34 @@
       "passwordRequired": "ادخل كلمه المرور",
       "passwordMin": "اقل عدد مسموح 8"
     },
+     
     "noAccountText": "هل لديك حساب ؟",
     "createAccountText": "انشأ حساب جديد"
+  },
+    "signup": {
+    "title": "إنشاء حساب جديد",
+    "subtitle": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص",
+    "username": "اسم المستخدم",
+    "usernameHint": "على سبيل المثال احمد محمد",
+    "name": "الاسم",
+    "nameHint": "ادخل اسمك الكامل",
+    "email": "البريد الإلكتروني",
+    "emailHint": "example@mail.com",
+    "phone": "رقم الهاتف",
+    "phoneHint": "+964 7700000000",
+    "password": "كلمة المرور",
+    "passwordHint": "ادخل كلمة المرور لحسابك",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "confirmPasswordHint": "اعد كتابة كلمة المرور",
+    "errors": {
+      "usernameRequired": "ادخل اسم المستخدم",
+      "passwordRequired": "ادخل كلمة المرور",
+      "passwordMin": "اقل عدد مسموح 8",
+      "passwordMismatch": "كلمة المرور غير متطابقة",
+      "emailRequired": "ادخل البريد الإلكتروني",
+      "phoneRequired": "ادخل رقم الهاتف"
+    },
+    "haveAccountText": "هل لديك حساب بالفعل؟",
+    "loginText": "سجل دخولك"
   }
 }

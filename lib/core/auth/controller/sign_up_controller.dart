@@ -13,17 +13,21 @@ class SignUpController extends Notifier<SignUpState> {
     return SignUpState();
   }
 
-Future<void> signUp(SignUpModel model) async {
-  state = state.copyWith(isLoading: true, error: null, isSuccess: true );
+  Future<void> signUp(SignUpModel model) async {
+    state = state.copyWith(isLoading: true, error: null, isSuccess: true);
 
-  try {
-    await ref.read(authRepoProvider).singUp(model);
+    try {
+      await ref.read(authRepoProvider).singUp(model);
 
-    ref.invalidate(authControllerProvider);
+      ref.invalidate(authControllerProvider);
 
-    state = state.copyWith(isLoading: false);
-  } catch (e) {
-    state = state.copyWith(isLoading: false, error: e.toString());
+      state = state.copyWith(isLoading: false, isSuccess: true);
+    } catch (e) {
+      state = state.copyWith(
+        isLoading: false,
+        error: e.toString(),
+        isSuccess: false,
+      );
+    }
   }
-}
 }

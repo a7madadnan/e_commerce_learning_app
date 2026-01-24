@@ -5,6 +5,7 @@ import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../translator/strings.g.dart';
 
 @RoutePage()
 class SignUpScreen extends ConsumerStatefulWidget {
@@ -37,7 +38,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
     });
 
     return Scaffold(
-      appBar: AppBar(title: Text(' إنشاء حساب جديد '), centerTitle: true),
+      appBar: AppBar(title: Text(t.signup.title), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Form(
@@ -47,41 +48,48 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
             // spacing: 16.0,
             children: [
               Text(
-                'انشاء حساب جديد',
+                t.signup.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
               ),
               Text(
-                'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى.',
+                t.signup.subtitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 14),
               ),
-
+              SizedBox(height: 20.0),
               Inputfield(
-                label: 'اسم المستخدم',
-                hint: 'على سبيل المثال احمد محمد ',
+                label: t.signup.username,
+                hint: t.signup.usernameHint,
                 controller: usernameController,
               ),
+              SizedBox(height: 10.0),
               Inputfield(
-                label: 'الاسم ',
-                hint: 'على سبيل المثال احمد محمد ',
+                label: t.signup.name,
+                hint: t.signup.nameHint,
                 controller: nameController,
               ),
+              SizedBox(height: 10.0),
+
               Inputfield(
-                label: 'الايميل ',
-                hint: 'boone@raza.net ',
+                label: t.signup.email,
+                hint: t.signup.emailHint,
                 controller: emailController,
               ),
+              SizedBox(height: 10.0),
+
               Inputfield(
-                label: 'رقم الهاتف ',
-                hint: '+44 0776527762 ',
+                label: t.signup.phone,
+                hint: t.signup.phoneHint,
                 controller: phoneController,
               ),
+              SizedBox(height: 10.0),
+
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'كلمه المرور',
+                    t.signup.password,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
@@ -94,7 +102,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     // textAlign: TextAlign.end,
                     keyboardType: TextInputType.visiblePassword,
                     decoration: InputDecoration(
-                      hintText: ' ادحل كلمة المرور لحسابك',
+                      hintText: t.signup.passwordHint,
                       hintStyle: TextStyle(fontSize: 14),
                     ),
                     validator: (value) {

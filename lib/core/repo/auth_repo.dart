@@ -24,6 +24,8 @@ class AuthRepo {
 
   Future<UserModel> singUp(SignUpModel model) async {
     try {
+
+      log('SIGN UP REQUEST: ${model.toJson()}');
       final res = await dio.post('/signup', data: model.toJson());
 
       log('SIGN UP RESPONSE: ${res.data}');

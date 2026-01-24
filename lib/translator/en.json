@@ -19,5 +19,33 @@
     },
     "noAccountText": "Don't have an account?",
     "createAccountText": "Create a new account"
+  },
+
+  "signup": {
+    "title": "Sign Up",
+    "subtitle": "This text is an example of a placeholder text that can be replaced in the same space. It has been generated as a sample.",
+    "username": "Username",
+    "usernameHint": "For example: JohnDoe",
+    "name": "Name",
+    "nameHint": "Enter your full name",
+    "email": "Email",
+    "emailHint": "example@mail.com",
+    "phone": "Phone",
+    "phoneHint": "+44 7700000000",
+    "password": "Password",
+    "passwordHint": "Enter your account password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordHint": "Re-enter your password",
+    "errors": {
+      "usernameRequired": "Please enter username",
+      "passwordRequired": "Please enter password",
+      "passwordMin": "Minimum allowed is 8 characters",
+      "passwordMismatch": "Passwords do not match",
+      "emailRequired": "Please enter email",
+      "phoneRequired": "Please enter phone number"
+    },
+    "haveAccountText": "Already have an account?",
+    "loginText": "Login"
+  
   }
 }

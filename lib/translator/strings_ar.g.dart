@@ -45,6 +45,7 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	String get appName => 'دراكون';
 
 	late final TranslationsLoginAr login = TranslationsLoginAr._(_root);
+	late final TranslationsSignupAr signup = TranslationsSignupAr._(_root);
 }
 
 // Path: login
@@ -85,6 +86,65 @@ class TranslationsLoginAr {
 	String get createAccountText => 'انشأ حساب جديد';
 }
 
+// Path: signup
+class TranslationsSignupAr {
+	TranslationsSignupAr._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ar: 'إنشاء حساب جديد'
+	String get title => 'إنشاء حساب جديد';
+
+	/// ar: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص'
+	String get subtitle => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص';
+
+	/// ar: 'اسم المستخدم'
+	String get username => 'اسم المستخدم';
+
+	/// ar: 'على سبيل المثال احمد محمد'
+	String get usernameHint => 'على سبيل المثال احمد محمد';
+
+	/// ar: 'الاسم'
+	String get name => 'الاسم';
+
+	/// ar: 'ادخل اسمك الكامل'
+	String get nameHint => 'ادخل اسمك الكامل';
+
+	/// ar: 'البريد الإلكتروني'
+	String get email => 'البريد الإلكتروني';
+
+	/// ar: 'example@mail.com'
+	String get emailHint => 'example@mail.com';
+
+	/// ar: 'رقم الهاتف'
+	String get phone => 'رقم الهاتف';
+
+	/// ar: '+964 7700000000'
+	String get phoneHint => '+964 7700000000';
+
+	/// ar: 'كلمة المرور'
+	String get password => 'كلمة المرور';
+
+	/// ar: 'ادخل كلمة المرور لحسابك'
+	String get passwordHint => 'ادخل كلمة المرور لحسابك';
+
+	/// ar: 'تأكيد كلمة المرور'
+	String get confirmPassword => 'تأكيد كلمة المرور';
+
+	/// ar: 'اعد كتابة كلمة المرور'
+	String get confirmPasswordHint => 'اعد كتابة كلمة المرور';
+
+	late final TranslationsSignupErrorsAr errors = TranslationsSignupErrorsAr._(_root);
+
+	/// ar: 'هل لديك حساب بالفعل؟'
+	String get haveAccountText => 'هل لديك حساب بالفعل؟';
+
+	/// ar: 'سجل دخولك'
+	String get loginText => 'سجل دخولك';
+}
+
 // Path: login.errors
 class TranslationsLoginErrorsAr {
 	TranslationsLoginErrorsAr._(this._root);
@@ -98,6 +158,33 @@ class TranslationsLoginErrorsAr {
 
 	/// ar: 'اقل عدد مسموح 8'
 	String get passwordMin => 'اقل عدد مسموح 8';
+}
+
+// Path: signup.errors
+class TranslationsSignupErrorsAr {
+	TranslationsSignupErrorsAr._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// ar: 'ادخل اسم المستخدم'
+	String get usernameRequired => 'ادخل اسم المستخدم';
+
+	/// ar: 'ادخل كلمة المرور'
+	String get passwordRequired => 'ادخل كلمة المرور';
+
+	/// ar: 'اقل عدد مسموح 8'
+	String get passwordMin => 'اقل عدد مسموح 8';
+
+	/// ar: 'كلمة المرور غير متطابقة'
+	String get passwordMismatch => 'كلمة المرور غير متطابقة';
+
+	/// ar: 'ادخل البريد الإلكتروني'
+	String get emailRequired => 'ادخل البريد الإلكتروني';
+
+	/// ar: 'ادخل رقم الهاتف'
+	String get phoneRequired => 'ادخل رقم الهاتف';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -120,6 +207,28 @@ extension on Translations {
 			'login.errors.passwordMin' => 'اقل عدد مسموح 8',
 			'login.noAccountText' => 'هل لديك حساب ؟',
 			'login.createAccountText' => 'انشأ حساب جديد',
+			'signup.title' => 'إنشاء حساب جديد',
+			'signup.subtitle' => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص',
+			'signup.username' => 'اسم المستخدم',
+			'signup.usernameHint' => 'على سبيل المثال احمد محمد',
+			'signup.name' => 'الاسم',
+			'signup.nameHint' => 'ادخل اسمك الكامل',
+			'signup.email' => 'البريد الإلكتروني',
+			'signup.emailHint' => 'example@mail.com',
+			'signup.phone' => 'رقم الهاتف',
+			'signup.phoneHint' => '+964 7700000000',
+			'signup.password' => 'كلمة المرور',
+			'signup.passwordHint' => 'ادخل كلمة المرور لحسابك',
+			'signup.confirmPassword' => 'تأكيد كلمة المرور',
+			'signup.confirmPasswordHint' => 'اعد كتابة كلمة المرور',
+			'signup.errors.usernameRequired' => 'ادخل اسم المستخدم',
+			'signup.errors.passwordRequired' => 'ادخل كلمة المرور',
+			'signup.errors.passwordMin' => 'اقل عدد مسموح 8',
+			'signup.errors.passwordMismatch' => 'كلمة المرور غير متطابقة',
+			'signup.errors.emailRequired' => 'ادخل البريد الإلكتروني',
+			'signup.errors.phoneRequired' => 'ادخل رقم الهاتف',
+			'signup.haveAccountText' => 'هل لديك حساب بالفعل؟',
+			'signup.loginText' => 'سجل دخولك',
 			_ => null,
 		};
 	}
