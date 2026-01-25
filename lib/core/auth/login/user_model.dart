@@ -6,7 +6,7 @@ class UserModel {
   final String joinDate;
   final String? phone;
   final int? billingAddressId;
-  final int shippingAddressId;
+  final int? shippingAddressId;
   final String? avatar;
   final String password;
 
@@ -18,7 +18,7 @@ class UserModel {
     required this.joinDate,
     this.phone,
     this.billingAddressId,
-    required this.shippingAddressId,
+    this.shippingAddressId,
     this.avatar,
     required this.password,
   });

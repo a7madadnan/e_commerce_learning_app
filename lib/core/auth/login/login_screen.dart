@@ -29,6 +29,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   bool isPasswordHidden = true;
 
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,6 +139,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   if (!formkey.currentState!.validate()) {
                     return;
                   }
+                  setState(() {
+                    isLoading = true;
+                  });
 
                   await ref
                       .read(authControllerProvider.notifier)
@@ -147,6 +151,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           passwordController.text,
                         ),
                       );
+                  setState(() {
+                    isLoading = false;
+                  });
                   if (context.mounted) {
                     context.router.navigate(HomeRoute());
                   }
@@ -158,7 +165,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 },
 
                 // Navigate to home screen after successful login
-                child: Text(t.login.title),
+                child: isLoading
+                    ? const CircularProgressIndicator(color: Colors.white)
+                    : Text(t.login.title),
               ),
               SizedBox(height: 10.0),
               Center(
@@ -243,4 +252,3 @@ final xProvider = Provider<int>((ref) {
 //     return const Placeholder();
 //   }
 // }
-
