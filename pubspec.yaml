@@ -21,6 +21,8 @@ dependencies:
   slang: ^4.11.0
   slang_flutter: ^4.11.0
   auto_route: ^11.0.0
+  talker_dio_logger: ^5.1.12
+  talker_flutter: ^5.1.12
   
 
 dev_dependencies:

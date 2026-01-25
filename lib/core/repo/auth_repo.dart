@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/local_storage_service.dart';
@@ -24,11 +22,7 @@ class AuthRepo {
 
   Future<UserModel> singUp(SignUpModel model) async {
     try {
-
-      log('SIGN UP REQUEST: ${model.toJson()}');
       final res = await dio.post('/signup', data: model.toJson());
-
-      log('SIGN UP RESPONSE: ${res.data}');
 
       final user = UserModel.fromJson(res.data['customer'] ?? res.data);
 
@@ -36,15 +30,13 @@ class AuthRepo {
 
       // return UserModel.fromJson(res.data);
       return user;
-    } on DioException catch (e) {
-      log('SIGN UP ERROR: ${e.response?.data}');
-      throw e.response?.data['message'] ?? 'Sign up failed';
+    } catch (e) {
+      throw e.toString();
     }
   }
 
   Future<UserModel> login(LoginModel loginModel) async {
     final res = await dio.post('/login', data: loginModel.toJson());
-    log('ccccc ${res.data}');
     final user = UserModel.fromJson(res.data['customer']);
 
     localStorageService.saveUser(user);

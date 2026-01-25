@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:e_commerce_learning_app/component.dart';
-import 'package:e_commerce_learning_app/core/auth/controller/sign_up_controller.dart';
+import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
 import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/material.dart';
@@ -23,20 +23,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final GlobalKey<FormState> formkey = GlobalKey<FormState>(); //مهم للفورم
+
   @override
   Widget build(BuildContext context) {
-    ref.listen(signUpControllerProvider, (previous, next) {
-      if (next.isSuccess) {
-        context.router.replace(const HomeRoute());
-      }
-
-      if (next.error != null) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(next.error!)));
-      }
-    });
-
     return Scaffold(
       appBar: AppBar(title: Text(t.signup.title), centerTitle: true),
       body: Padding(
@@ -125,7 +114,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     return;
                   }
                   await ref
-                      .read(signUpControllerProvider.notifier)
+                      .read(authControllerProvider.notifier)
                       .signUp(
                         SignUpModel(
                           username: usernameController.text,
@@ -136,6 +125,9 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           avatar: null,
                         ),
                       );
+                  if (context.mounted) {
+                    context.router.replace(const HomeRoute());
+                  }
                 },
                 child: const Text('المواصله'),
               ),
