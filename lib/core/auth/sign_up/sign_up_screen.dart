@@ -130,7 +130,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                         SignUpModel(
                           username: usernameController.text,
                           password: passwordController.text,
-                          name: nameController.text, // الاسم قبل الايميل
+                          name: nameController.text,
                           email: emailController.text,
                           phone: phoneController.text,
                           avatar: null,
