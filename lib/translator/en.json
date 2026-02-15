@@ -36,16 +36,28 @@
     "passwordHint": "Enter your account password",
     "confirmPassword": "Confirm Password",
     "confirmPasswordHint": "Re-enter your password",
+    "kcontinue": "Continue",
     "errors": {
+      "nameRequired": "Please enter full name",
+      "nameMin": "Name is too short",
+
       "usernameRequired": "Please enter username",
+      "usernameMin": "Username must be at least 5 characters",
+      "usernameInvalid": "Username can contain letters and numbers only",
+
+      "emailRequired": "Please enter email",
+      "emailInvalid": "Invalid email address",
+
+      "phoneRequired": "Please enter phone number",
+      "phoneInvalid": "Invalid phone number",
+
       "passwordRequired": "Please enter password",
       "passwordMin": "Minimum allowed is 8 characters",
-      "passwordMismatch": "Passwords do not match",
-      "emailRequired": "Please enter email",
-      "phoneRequired": "Please enter phone number"
+      "passwordMismatch": "Passwords do not match"
     },
+
     "haveAccountText": "Already have an account?",
     "loginText": "Login"
-  
+
   }
 }

@@ -157,11 +157,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   if (context.mounted) {
                     context.router.navigate(HomeRoute());
                   }
-                  // if (context.mounted) {
-                  //   Navigator.of(context).pushReplacement(
-                  //     MaterialPageRoute(builder: (context) => HomeScreen()),
-                  //   );
-                  // }
+                
+                  
                 },
 
                 // Navigate to home screen after successful login

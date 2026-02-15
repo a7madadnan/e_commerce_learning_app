@@ -17,11 +17,11 @@
       "passwordRequired": "ادخل كلمه المرور",
       "passwordMin": "اقل عدد مسموح 8"
     },
-     
+
     "noAccountText": "هل لديك حساب ؟",
     "createAccountText": "انشأ حساب جديد"
   },
-    "signup": {
+  "signup": {
     "title": "إنشاء حساب جديد",
     "subtitle": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص",
     "username": "اسم المستخدم",
@@ -36,13 +36,25 @@
     "passwordHint": "ادخل كلمة المرور لحسابك",
     "confirmPassword": "تأكيد كلمة المرور",
     "confirmPasswordHint": "اعد كتابة كلمة المرور",
+    "kcontinue": "المواصله",
     "errors": {
+      "nameRequired": "ادخل الاسم الكامل",
+      "nameMin": "الاسم قصير جدًا",
+
       "usernameRequired": "ادخل اسم المستخدم",
+      "usernameMin": "اسم المستخدم لازم يكون 5 أحرف على الأقل",
+      "usernameInvalid": "اسم المستخدم يقبل حروف وأرقام فقط",
+
+      "emailRequired": "ادخل البريد الإلكتروني",
+      "emailInvalid": "البريد الإلكتروني غير صحيح",
+
+      "phoneRequired": "ادخل رقم الهاتف",
+      "phoneInvalid": "رقم الهاتف غير صحيح",
+
       "passwordRequired": "ادخل كلمة المرور",
       "passwordMin": "اقل عدد مسموح 8",
-      "passwordMismatch": "كلمة المرور غير متطابقة",
-      "emailRequired": "ادخل البريد الإلكتروني",
-      "phoneRequired": "ادخل رقم الهاتف"
+
+      "passwordMismatch": "كلمة المرور غير متطابقة"
     },
     "haveAccountText": "هل لديك حساب بالفعل؟",
     "loginText": "سجل دخولك"

@@ -82,6 +82,7 @@ class _TranslationsSignupEn implements TranslationsSignupAr {
 	@override String get passwordHint => 'Enter your account password';
 	@override String get confirmPassword => 'Confirm Password';
 	@override String get confirmPasswordHint => 'Re-enter your password';
+	@override String get kcontinue => 'Continue';
 	@override late final _TranslationsSignupErrorsEn errors = _TranslationsSignupErrorsEn._(_root);
 	@override String get haveAccountText => 'Already have an account?';
 	@override String get loginText => 'Login';
@@ -105,12 +106,18 @@ class _TranslationsSignupErrorsEn implements TranslationsSignupErrorsAr {
 	final TranslationsEn _root; // ignore: unused_field
 
 	// Translations
+	@override String get nameRequired => 'Please enter full name';
+	@override String get nameMin => 'Name is too short';
 	@override String get usernameRequired => 'Please enter username';
+	@override String get usernameMin => 'Username must be at least 5 characters';
+	@override String get usernameInvalid => 'Username can contain letters and numbers only';
+	@override String get emailRequired => 'Please enter email';
+	@override String get emailInvalid => 'Invalid email address';
+	@override String get phoneRequired => 'Please enter phone number';
+	@override String get phoneInvalid => 'Invalid phone number';
 	@override String get passwordRequired => 'Please enter password';
 	@override String get passwordMin => 'Minimum allowed is 8 characters';
 	@override String get passwordMismatch => 'Passwords do not match';
-	@override String get emailRequired => 'Please enter email';
-	@override String get phoneRequired => 'Please enter phone number';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -147,12 +154,19 @@ extension on TranslationsEn {
 			'signup.passwordHint' => 'Enter your account password',
 			'signup.confirmPassword' => 'Confirm Password',
 			'signup.confirmPasswordHint' => 'Re-enter your password',
+			'signup.kcontinue' => 'Continue',
+			'signup.errors.nameRequired' => 'Please enter full name',
+			'signup.errors.nameMin' => 'Name is too short',
 			'signup.errors.usernameRequired' => 'Please enter username',
+			'signup.errors.usernameMin' => 'Username must be at least 5 characters',
+			'signup.errors.usernameInvalid' => 'Username can contain letters and numbers only',
+			'signup.errors.emailRequired' => 'Please enter email',
+			'signup.errors.emailInvalid' => 'Invalid email address',
+			'signup.errors.phoneRequired' => 'Please enter phone number',
+			'signup.errors.phoneInvalid' => 'Invalid phone number',
 			'signup.errors.passwordRequired' => 'Please enter password',
 			'signup.errors.passwordMin' => 'Minimum allowed is 8 characters',
 			'signup.errors.passwordMismatch' => 'Passwords do not match',
-			'signup.errors.emailRequired' => 'Please enter email',
-			'signup.errors.phoneRequired' => 'Please enter phone number',
 			'signup.haveAccountText' => 'Already have an account?',
 			'signup.loginText' => 'Login',
 			_ => null,

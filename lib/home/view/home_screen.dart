@@ -1,101 +1,67 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
-import 'package:e_commerce_learning_app/core/auth/login/login_screen.dart';
-import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:auto_route/auto_route.dart';
 
+// import ';
 @RoutePage()
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Home')),
-      body: Column(
-        spacing: 30,
-        children: [
-          // Center(child: Text('Welcome to the Home Screen')),
-
-          // FilledButton(
-          //   onPressed: () {
-          //     ref.read(authControllerProvider.notifier).logout();
-          //   },
-          //   child: Text('logout'),
-          // ),
-
-          // ProductCard(),
-          ProductCardPr(),
-
-          FilledButton(
-            onPressed: () {
-              context.router.push(ProductRoute());
-            },
-            child: Text('go to product'),
-          ),
-          FilledButton.tonal(
-            onPressed: () {
-              ref.read(authControllerProvider.notifier).logout();
-            },
-            child: Text('logout'),
-          ),
-        ],
-      ),
-    );
-  }
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class ProductCard extends StatefulWidget {
-  const ProductCard({super.key});
-
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool isFavorite = false;
-
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+     body: SafeArea(
+        child: Column(
+          children: [
+            _buildHeader(),
+            const SizedBox(height: 20),
+            const Expanded(
+              child: Center(
+                child: Text(
+                  "مرحبًا فاطمة 💙",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+     );
+}}
+
+Widget _buildHeader() {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+
+    child: Row(
       children: [
-        Text('isFavorite =  $isFavorite'),
-        FilledButton(
-          onPressed: () {
-            setState(() {
-              isFavorite = !isFavorite;
-            });
-          },
-          child: Text('toggle statefull'),
+        Row(
+          children: [
+            Stack(
+              children: [
+              
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    "assets/icons/Bag Smile.svg",
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset("assets/icons/Bag Smile.svg"),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
-    );
-  }
+    ),
+  );
 }
-
-class ProductCardPr extends ConsumerWidget {
-  const ProductCardPr({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isFavorite = ref.watch(isFavoriteProvider);
-    final user = ref.watch(authControllerProvider);
-    return Column(
-      children: [
-        Text('isFavorite =  $isFavorite'),
-        Text('user =  ${user?.email}'),
-
-        FilledButton(
-          onPressed: () {
-            ref.read(isFavoriteProvider.notifier).state = !isFavorite;
-          },
-          child: Text('toggle provider'),
-        ),
-      ],
-    );
-  }
-}
-
-final isFavoriteProvider = StateProvider<bool>((ref) => false);

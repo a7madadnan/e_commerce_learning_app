@@ -136,6 +136,9 @@ class TranslationsSignupAr {
 	/// ar: 'اعد كتابة كلمة المرور'
 	String get confirmPasswordHint => 'اعد كتابة كلمة المرور';
 
+	/// ar: 'المواصله'
+	String get kcontinue => 'المواصله';
+
 	late final TranslationsSignupErrorsAr errors = TranslationsSignupErrorsAr._(_root);
 
 	/// ar: 'هل لديك حساب بالفعل؟'
@@ -168,8 +171,32 @@ class TranslationsSignupErrorsAr {
 
 	// Translations
 
+	/// ar: 'ادخل الاسم الكامل'
+	String get nameRequired => 'ادخل الاسم الكامل';
+
+	/// ar: 'الاسم قصير جدًا'
+	String get nameMin => 'الاسم قصير جدًا';
+
 	/// ar: 'ادخل اسم المستخدم'
 	String get usernameRequired => 'ادخل اسم المستخدم';
+
+	/// ar: 'اسم المستخدم لازم يكون 5 أحرف على الأقل'
+	String get usernameMin => 'اسم المستخدم لازم يكون 5 أحرف على الأقل';
+
+	/// ar: 'اسم المستخدم يقبل حروف وأرقام فقط'
+	String get usernameInvalid => 'اسم المستخدم يقبل حروف وأرقام فقط';
+
+	/// ar: 'ادخل البريد الإلكتروني'
+	String get emailRequired => 'ادخل البريد الإلكتروني';
+
+	/// ar: 'البريد الإلكتروني غير صحيح'
+	String get emailInvalid => 'البريد الإلكتروني غير صحيح';
+
+	/// ar: 'ادخل رقم الهاتف'
+	String get phoneRequired => 'ادخل رقم الهاتف';
+
+	/// ar: 'رقم الهاتف غير صحيح'
+	String get phoneInvalid => 'رقم الهاتف غير صحيح';
 
 	/// ar: 'ادخل كلمة المرور'
 	String get passwordRequired => 'ادخل كلمة المرور';
@@ -179,12 +206,6 @@ class TranslationsSignupErrorsAr {
 
 	/// ar: 'كلمة المرور غير متطابقة'
 	String get passwordMismatch => 'كلمة المرور غير متطابقة';
-
-	/// ar: 'ادخل البريد الإلكتروني'
-	String get emailRequired => 'ادخل البريد الإلكتروني';
-
-	/// ar: 'ادخل رقم الهاتف'
-	String get phoneRequired => 'ادخل رقم الهاتف';
 }
 
 /// The flat map containing all translations for locale <ar>.
@@ -221,12 +242,19 @@ extension on Translations {
 			'signup.passwordHint' => 'ادخل كلمة المرور لحسابك',
 			'signup.confirmPassword' => 'تأكيد كلمة المرور',
 			'signup.confirmPasswordHint' => 'اعد كتابة كلمة المرور',
+			'signup.kcontinue' => 'المواصله',
+			'signup.errors.nameRequired' => 'ادخل الاسم الكامل',
+			'signup.errors.nameMin' => 'الاسم قصير جدًا',
 			'signup.errors.usernameRequired' => 'ادخل اسم المستخدم',
+			'signup.errors.usernameMin' => 'اسم المستخدم لازم يكون 5 أحرف على الأقل',
+			'signup.errors.usernameInvalid' => 'اسم المستخدم يقبل حروف وأرقام فقط',
+			'signup.errors.emailRequired' => 'ادخل البريد الإلكتروني',
+			'signup.errors.emailInvalid' => 'البريد الإلكتروني غير صحيح',
+			'signup.errors.phoneRequired' => 'ادخل رقم الهاتف',
+			'signup.errors.phoneInvalid' => 'رقم الهاتف غير صحيح',
 			'signup.errors.passwordRequired' => 'ادخل كلمة المرور',
 			'signup.errors.passwordMin' => 'اقل عدد مسموح 8',
 			'signup.errors.passwordMismatch' => 'كلمة المرور غير متطابقة',
-			'signup.errors.emailRequired' => 'ادخل البريد الإلكتروني',
-			'signup.errors.phoneRequired' => 'ادخل رقم الهاتف',
 			'signup.haveAccountText' => 'هل لديك حساب بالفعل؟',
 			'signup.loginText' => 'سجل دخولك',
 			_ => null,

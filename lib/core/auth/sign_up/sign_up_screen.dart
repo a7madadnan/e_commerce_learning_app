@@ -5,6 +5,7 @@ import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../translator/strings.g.dart';
 
 @RoutePage()
@@ -51,12 +52,22 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 label: t.signup.username,
                 hint: t.signup.usernameHint,
                 controller: usernameController,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(
+                   errorText: t.signup.errors.usernameRequired,
+                  ),
+                  FormBuilderValidators.minLength(5,errorText: t.signup.errors.usernameMin)
+                ]),
               ),
               SizedBox(height: 10.0),
               Inputfield(
                 label: t.signup.name,
                 hint: t.signup.nameHint,
                 controller: nameController,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(errorText: t.signup.errors.nameRequired),
+                  FormBuilderValidators.minLength(3,errorText: t.signup.errors.nameMin)
+                ]),
               ),
               SizedBox(height: 10.0),
 
@@ -64,6 +75,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 label: t.signup.email,
                 hint: t.signup.emailHint,
                 controller: emailController,
+                validator: FormBuilderValidators.compose([
+                  FormBuilderValidators.required(errorText: t.signup.errors.emailRequired),
+                  FormBuilderValidators.email(errorText: t.signup.errors.emailInvalid),
+                ]),
               ),
               SizedBox(height: 10.0),
 
@@ -71,6 +86,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                 label: t.signup.phone,
                 hint: t.signup.phoneHint,
                 controller: phoneController,
+                validator:FormBuilderValidators.compose([
+                  FormBuilderValidators.required(errorText: t.signup.errors.phoneRequired),
+                  FormBuilderValidators.phoneNumber(errorText: t.signup.errors.phoneInvalid),
+                ])  
               ),
               SizedBox(height: 10.0),
 
@@ -94,15 +113,16 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                       hintText: t.signup.passwordHint,
                       hintStyle: TextStyle(fontSize: 14),
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'ادخل كلمه المرور ';
-                      }
-                      if (value.length < 8) {
-                        return "كلمه المرور اقل شي 8";
-                      }
-                      return null;
-                    },
+
+                    validator: FormBuilderValidators.compose([
+                      FormBuilderValidators.required(
+                        errorText: t.signup.errors.passwordRequired,
+                      ),
+                      FormBuilderValidators.minLength(
+                        8,
+                        errorText: t.signup.errors.passwordMin,
+                      ),
+                    ]),
                   ),
                 ],
               ),
@@ -129,7 +149,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                     context.router.replace(const HomeRoute());
                   }
                 },
-                child: const Text('المواصله'),
+                child: Text(t.signup.kcontinue),
               ),
             ],
           ),
