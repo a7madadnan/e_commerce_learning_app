@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter 
 
   google_fonts: ^6.3.2
-  flutter_svg: ^2.1.1 
+  flutter_svg: ^2.2.3 
   dio: ^5.9.0
   shared_preferences: ^2.5.3
   riverpod: ^3.0.3
@@ -38,14 +38,15 @@ flutter:
   uses-material-design: true
 
   assets:
-    - lib/assets/
+    - assets/icons/
+    - assets/images/
 
   fonts:
     - family: TRYGrtsk
       fonts:
-        - asset: lib/assets/fonts/TRYGrtsk-Regular.ttf
+        - asset: assets/fonts/TRYGrtsk-Regular.ttf
           weight: 400
-        - asset: lib/assets/fonts/TRYGrtsk-Bold.ttf
+        - asset: assets/fonts/TRYGrtsk-Bold.ttf
           weight: 700
 
   

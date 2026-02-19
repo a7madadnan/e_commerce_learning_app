@@ -6,13 +6,19 @@ import 'package:e_commerce_learning_app/translator/strings.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+// import 'package:talker_flutter/talker_flutter.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final sharedPreferences = await SharedPreferences.getInstance();
+  // logger.info("App Started 🔥");
   runApp(
+    
+
     TranslationProvider(
       child: ProviderScope(
         overrides: [
