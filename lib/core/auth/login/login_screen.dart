@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
-import 'package:e_commerce_learning_app/core/auth/login/login_model.dart';
+import 'package:e_commerce_learning_app/core/model/login_model.dart';
 import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_screen.dart';
 import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/foundation.dart';

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:e_commerce_learning_app/core/dependencies_injection.dart';
-import 'package:e_commerce_learning_app/core/auth/login/user_model.dart';
+import 'package:e_commerce_learning_app/core/model/user_model.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

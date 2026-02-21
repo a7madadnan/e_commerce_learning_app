@@ -1,6 +1,6 @@
-import 'package:e_commerce_learning_app/core/auth/login/login_model.dart';
-import 'package:e_commerce_learning_app/core/auth/login/user_model.dart';
-import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
+import 'package:e_commerce_learning_app/core/model/login_model.dart';
+import 'package:e_commerce_learning_app/core/model/user_model.dart';
+import 'package:e_commerce_learning_app/core/model/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/repo/auth_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

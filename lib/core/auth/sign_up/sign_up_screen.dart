@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:e_commerce_learning_app/component.dart';
 import 'package:e_commerce_learning_app/core/auth/controller/auth_controller.dart';
-import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_model.dart';
+import 'package:e_commerce_learning_app/core/model/sign_up_model.dart';
 import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -4,6 +4,7 @@ import 'package:e_commerce_learning_app/core/route/guard/auth_guard.dart';
 import 'package:e_commerce_learning_app/core/auth/login/login_screen.dart';
 import 'package:e_commerce_learning_app/core/auth/sign_up/sign_up_screen.dart';
 import 'package:e_commerce_learning_app/home/view/home_screen.dart';
+import 'package:e_commerce_learning_app/products/view/products_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'app_router.gr.dart';
@@ -26,5 +27,7 @@ class AppRouter extends RootStackRouter {
       // guards: [AuthGuard(ref: ref)],
     ),
     AutoRoute(page: SignUpRoute.page),
+
+    AutoRoute(page: ProductsRoute.page),
   ];
 }

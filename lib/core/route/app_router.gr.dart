@@ -43,6 +43,22 @@ class LoginRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProductsScreen]
+class ProductsRoute extends PageRouteInfo<void> {
+  const ProductsRoute({List<PageRouteInfo>? children})
+    : super(ProductsRoute.name, initialChildren: children);
+
+  static const String name = 'ProductsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProductsScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [SignUpScreen]
 class SignUpRoute extends PageRouteInfo<void> {
   const SignUpRoute({List<PageRouteInfo>? children})

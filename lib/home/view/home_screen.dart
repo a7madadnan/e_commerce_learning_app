@@ -1,3 +1,4 @@
+import 'package:e_commerce_learning_app/core/route/app_router.dart';
 import 'package:e_commerce_learning_app/home/bottom_nav/main_bottom_nav.dart';
 import 'package:e_commerce_learning_app/home/widget/banner_widget.dart';
 import 'package:e_commerce_learning_app/home/widget/categories_widget.dart';
@@ -64,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
             const SearchBarWidget(),
             const BannerWidget(),
             SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: () {
+                context.router.push(ProductsRoute());
+              },
+              child: Text('Products'),
+            ),
             // CategoriesWidget(
             //   categories: _categories,
             //   selectedIndex: _selectedIndex,

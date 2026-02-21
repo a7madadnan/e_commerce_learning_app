@@ -19,7 +19,7 @@ final dioProvider = Provider((red) {
     TalkerDioLogger(
       talker: logger,
       settings: TalkerDioLoggerSettings(
-        responseFilter: (response) => response.data.toString().length < 10000,
+        // responseFilter: (response) => response.data.toString().length < 10000,
         printErrorData: true,
         printRequestHeaders: true,
         printErrorHeaders: true,
